@@ -46,7 +46,11 @@ https://github.com/btcDesushi/reactive-armour-bot/issues
 プルリクも歓迎します
 
 ## Contributor
-[@asahinoboru_jp](https://twitter.com/asahinoboru_jp)
+[@asahinoboru_jp](https://twitter.com/asahinoboru_jp)  
+BTC: 3QsEk7tbNo3JASo7j8s1rCc4JU6kwoZGh9
+MONA: MBo7eyvXeaQdP17p4eGcfGpgJQHNkdVqar
+ZENY: ZuEdTL9X1iFTHbme8S2pMJJ1f36R5WuAgZ
+XP: XM4d1Cggn9LHWtq9nhQXryin2J9BsFsqv2
 
 ## License
 Code and documentation copyright 2017 by kokushin. Code released under the [MIT License](https://github.com/kokushin/node-twatch/blob/master/LICENSE).

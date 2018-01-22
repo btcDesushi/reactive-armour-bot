@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Crypto currency trading bot for Twitter watch.",
   "main": "index.js",
-  "repository": "https://github.com/btcDesushi/",
+  "repository": "https://github.com/btcDesushi/reactive-armour-bot",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

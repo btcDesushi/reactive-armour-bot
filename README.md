@@ -11,7 +11,9 @@ git clone
 
 ## Usage
 
-config.jsonを編集してAPIキーを設定してください
+config.jsonを編集してAPIキーを設定してください。
+TwiterのAPI KEYは[こちら](https://apps.twitter.com/)で取得できます。
+```json
 {
     "twitter": {
       "consumer_key": "YOUR_CONSUMER_KEY",
@@ -24,6 +26,7 @@ config.jsonを編集してAPIキーを設定してください
       "secret": "YOUR_CHANNEL_NAME"
     }
 }
+```json
 
 起動するには
 ```shell
@@ -33,10 +36,15 @@ $ node index.js -u user_id1,user_id2 -k keyword1,keyword2
 -u 監視ユーザーID1,監視ユーザーID2,,,
 -k 監視キーワード1,監視キーワード2,,,
 
-## Issue
+## Issues
+
+ご意見等ありましたら
+https://github.com/btcDesushi/reactive-armour-bot/issues
+こちらかtwitter[@asahinoboru_jp](https://twitter.com/asahinoboru_jp)まで。
+プルリク歓迎します
 
 ## Contributor
-[@asahinoboru_jp](https://github.com/btcDesushi)
+[@asahinoboru_jp](https://twitter.com/asahinoboru_jp)
 
 ## License
 Code and documentation copyright 2017 by kokushin. Code released under the [MIT License](https://github.com/kokushin/node-twatch/blob/master/LICENSE).

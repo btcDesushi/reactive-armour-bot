@@ -1,0 +1,17 @@
+{
+  "name": "reactive-armour-bot",
+  "version": "1.0.0",
+  "description": "Crypto currency trading bot for Twitter watch.",
+  "main": "index.js",
+  "repository": "https://github.com/btcDesushi/",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "btcDesushi",
+  "license": "MIT",
+  "dependencies": {
+    "bitflyer-promise": "github:btcDesushi/bitflyer-promise#develop",
+    "minimist": "^1.2.0",
+    "twitter": "^1.7.1"
+  }
+}

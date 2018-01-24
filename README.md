@@ -1,6 +1,6 @@
 # reactive-armour-bot
 
-Twiter streaming APIを使い、リアルタイムにTwitterを監視しBitFlyerのAPIを呼び出します。  
+Twiter streaming APIを使い、リアルタイムにTwitterを監視し、指定IDのユーザーの発言に特定のキーワードが含まれていた場合、BitFlyerのAPIを呼びて任意の注文を行います。  
 使用するにはTwitter API KEYとBitFlyerのAPI KEYが必要です。  
   
 例として、すべての注文をキャンセルし、開いているポジションをすべてクローズするロジックを組み込んであります。  

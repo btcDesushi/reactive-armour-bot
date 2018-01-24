@@ -12,6 +12,7 @@
   "dependencies": {
     "bitflyer-promise": "github:btcDesushi/bitflyer-promise#develop",
     "minimist": "^1.2.0",
+    "pubnub": "^4.20.0",
     "twitter": "^1.7.1"
   }
 }

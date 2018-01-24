@@ -5,6 +5,8 @@
 const Twitter = require('twitter');
 const minimist = require('minimist');
 const bitflyer = require('bitflyer-promise');
+const PubNub = require('pubnub');
+
 const config = require('./config.json');
 const product_code = 'FX_BTC_JPY';
 
@@ -31,6 +33,8 @@ if (options.keyword !== true && options.keyword !== undefined) {
 console.log('監視対象:' + username);
 console.log('監視キーワード:' + keyword);
 
+let price; // <-- pubnubからTicker受信するたびに更新される現在値
+
 const client = new Twitter(config.twitter);
 client.stream('user', {}, (stream) => {
     stream.on('data', (obj) => {
@@ -42,13 +46,33 @@ client.stream('user', {}, (stream) => {
       if (username.test(tweet.username) && keyword.test(tweet.checkText)) {
         console.log(`${new Date()} ${tweet.username}:${tweet.text}`);
         closeAllPosition();
+        console.log(`PRICE = ${price}`);
+        specialOrder(price - 10000,'SELL',0.05,'BUY',price - 200000); // <-- specialOrder( 指値, 'SELL', 枚数, 'BUY', 利確値) 発注しない場合は行頭に「//」でコメントアウト
       }
     });
 
     stream.on('error', (error) => {
-      throw error;
+      console.log(error);
     })
 });
+
+// pubnub & now price
+
+const pubnub = new PubNub({
+	subscribeKey: 'sub-c-52a9ab50-291b-11e5-baaa-0619f8945a4f'
+});
+pubnub.addListener({
+	message: function(message) {
+		if (message.channel == 'lightning_ticker_FX_BTC_JPY') {
+            let data = message.message;
+            price = data.ltp;
+        }
+    }
+});
+pubnub.subscribe({
+    channels: ['lightning_ticker_FX_BTC_JPY']
+});
+
 
 // bitFlyer
 bitflyer.setCredentials(config.bitflyer.apikey, config.bitflyer.secret);
@@ -64,8 +88,6 @@ function clearAllOrders() {
 }
 
 function closeAllPosition() {
-	clearAllOrders();
-
 	bitflyer.getPositions({
 			'product_code': product_code
     })
@@ -130,6 +152,7 @@ function specialOrder(price,side,size,gain_side,gain_price) {
     })
     .then(function(payload) {
         console.log(payload);
+        process.exit();
     })
     .catch(function(error) {
         console.log('ORDER ERROR');

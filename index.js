@@ -47,7 +47,7 @@ client.stream('user', {}, (stream) => {
         console.log(`${new Date()} ${tweet.username}:${tweet.text}`);
         closeAllPosition();
         console.log(`PRICE = ${price}`);
-        specialOrder(price - 10000,'SELL',0.05,'BUY',price - 200000); // <-- specialOrder( 指値, 'SELL', 枚数, 'BUY', 利確値) 発注しない場合は行頭に「//」でコメントアウト
+        specialOrder(price - 10000,'SELL',0.05,'BUY',price - 200000, price + 10000); // <-- specialOrder( 指値, 'SELL', 枚数, 'BUY', 利確値, STOP値) 発注しない場合は行頭に「//」でコメントアウト
       }
     });
 
@@ -128,9 +128,9 @@ function closeAllPosition() {
 // 以下は特殊注文のオーダーをnodejsで実行する例
 // あくまで例であって無保証です。
 
-function specialOrder(price,side,size,gain_side,gain_price) {
+function specialOrder(price,side,size,gain_side,gain_price,stop_price) {
     bitflyer.sendParentOrder({
-        'order_method': 'IFD',
+        'order_method': 'IFDOCO',
         'minute_to_expire': 1,
         'time_in_force': 'GTC',
         'parameters': [
@@ -147,6 +147,13 @@ function specialOrder(price,side,size,gain_side,gain_price) {
                 'side': gain_side,
                 'price': gain_price,
                 'size': size
+            },
+            {
+                "product_code": "FX_BTC_JPY",
+                "condition_type": "STOP",
+                "side": gain_side,
+                "trigger_price": stop_price,
+                "size": size
             }
         ]
     })

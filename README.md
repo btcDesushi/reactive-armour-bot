@@ -55,4 +55,4 @@ ZENY: ZuEdTL9X1iFTHbme8S2pMJJ1f36R5WuAgZ
 XP: XM4d1Cggn9LHWtq9nhQXryin2J9BsFsqv2  
 
 ## License
-Code and documentation copyright 2017 by kokushin. Code released under the [MIT License](https://github.com/kokushin/node-twatch/blob/master/LICENSE).
+Code and documentation copyright 2018 by btcDesushi. Code released under the [MIT License](https://github.com/kokushin/node-twatch/blob/master/LICENSE).
